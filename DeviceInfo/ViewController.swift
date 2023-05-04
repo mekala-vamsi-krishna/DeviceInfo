@@ -102,8 +102,19 @@ class ViewController: UIViewController {
         return label
     }()
     
+    let processorLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.text = "Processor: \(ProcessInfo.processInfo.processorCount)"
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemGray6
         view.addSubview(deviceImageView)
         deviceImageView.addSubview(screenView)
         screenView.addSubview(header)
@@ -114,6 +125,7 @@ class ViewController: UIViewController {
         stackView.addArrangedSubview(batteryLevelLabel)
         stackView.addArrangedSubview(totalSpaceLabel)
         stackView.addArrangedSubview(availableSpaceLabel)
+        stackView.addArrangedSubview(processorLabel)
         
         NSLayoutConstraint.activate([
             deviceImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
